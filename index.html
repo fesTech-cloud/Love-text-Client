@@ -4,107 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Love Text Web App</title>
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        /* background-color: #2D2926FF; */
-        /* overflow: hidden; */
-        position: relative;
-        padding: 0rem 2rem;
-    }
-    .love-particle {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background-image: radial-gradient(circle, #ff7b7b, #e74c3c);
-        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        animation: loveParticle 5s linear infinite;
-    }
-    @keyframes loveParticle {
-        0% {
-            transform: translate(0, 0);
-        }
-        50% {
-            transform: translate(20px, -20px);
-        }
-        100% {
-            transform: translate(0, 0);
-        }
-    }
-    /* .container {
-        max-width: 1200px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #000;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    } */
-    h1 {
-        text-align: center;
-        color: #e74c3c;
-        margin-bottom: 20px;
-    }
-    .filters {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .filter-btn {
-        padding: 10px 20px;
-        border: none;
-        background-color: #e74c3c;
-        color: #fff;
-        cursor: pointer;
-        border-radius: 5px;
-        font-size: 16px;
-        margin-right: 10px;
-        margin-bottom: 1rem;
-    }
-    .love-texts {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-    .love-text {
-        position: relative;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
-    .love-text:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    }
-    .love-text h3 {
-        color: #e74c3c;
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
-    .love-text p {
-        color: #555;
-        font-size: 16px;
-        line-height: 1.6;
-    }
-    .copy-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 5px 10px;
-        background-color: #e74c3c;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    footer {
-        text-align: center;
-        margin-top: 50px;
-        color: #777;
-    }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="container">
@@ -116,21 +16,11 @@
         <button class="filter-btn" onclick="resetFilters()">Reset Filters</button>
     </div>
     <div class="love-texts">
-        <div class="love-text romance">
+        <!-- <div class="love-text romance">
             <h3>Romantic Love Message</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget est nec nulla suscipit fermentum.</p>
             <button class="copy-btn" onclick="copyText(this.previousElementSibling.innerText)">Copy</button>
-        </div>
-        <div class="love-text goodnight">
-            <h3>Good Night Text</h3>
-            <p>Integer nec mauris et nunc semper eleifend. Cras nec ex sit amet mauris tempor dignissim.</p>
-            <button class="copy-btn" onclick="copyText(this.previousElementSibling.innerText)">Copy</button>
-        </div>
-        <div class="love-text safejourney">
-            <h3>Safe Journey Message</h3>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-            <button class="copy-btn" onclick="copyText(this.previousElementSibling.innerText)">Copy</button>
-        </div>
+        </div> -->
         <!-- Add more love texts here -->
     </div>
     <footer>
@@ -138,54 +28,7 @@
     </footer>
 </div>
 
-<script>
-    // Function to create love particles
-    function createLoveParticle() {
-        const loveParticle = document.createElement('div');
-        loveParticle.classList.add('love-particle');
-        loveParticle.style.left = Math.random() * window.innerWidth + 'px';
-        loveParticle.style.top = Math.random() * window.innerHeight + 'px';
-        document.body.appendChild(loveParticle);
-
-        setTimeout(() => {
-            loveParticle.remove();
-        }, 5000);
-    }
-
-    // Generate love particles every 0.5 seconds
-    setInterval(createLoveParticle, 500);
-    
-    function filterText(category) {
-        var loveTexts = document.querySelectorAll('.love-text');
-        loveTexts.forEach(function(text) {
-            if (text.classList.contains(category)) {
-                text.style.display = 'block';
-            } else {
-                text.style.display = 'none';
-            }
-        });
-    }
-
-    function resetFilters() {
-        var loveTexts = document.querySelectorAll('.love-text');
-        loveTexts.forEach(function(text) {
-            text.style.display = 'block';
-        });
-    }
-
-    function copyText(text) {
-        const el = document.createElement('textarea');
-        el.value = text;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-        alert('Text copied to clipboard!');
-        
-        // Add love effect
-        createLoveParticle();
-    }
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
