@@ -46,7 +46,7 @@ h1 {
 .filter-btn {
     padding: 10px 20px;
     border: none;
-    background-color: #e74c3c;
+    /* background-color: #e74c3c; */
     color: #fff;
     cursor: pointer;
     border-radius: 5px;
@@ -96,4 +96,8 @@ footer {
     text-align: center;
     margin-top: 50px;
     color: #777;
+}
+
+#active {
+ background-color: #555;
 }

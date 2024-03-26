@@ -1,4 +1,5 @@
 const textContianer = document.querySelector(".love-texts");
+// const filter = document.getElementById("1");
 console.log(textContianer);
 
 function copyText(text) {
@@ -14,14 +15,15 @@ function copyText(text) {
   createLoveParticle();
 }
 
-const getData = async () => {
+const getData = async (data) => {
   try {
-    const response = await fetch("goodnight.json");
+    const response = await fetch("data.json");
+
     const data = await response.json();
 
     data.forEach((item) => {
       const textBox = document.createElement("div");
-      textBox.classList.add("love-text", "romance");
+      textBox.classList.add("love-text", `${item.category}`);
 
       const title = document.createElement("h3");
       title.textContent = item.title;
@@ -46,13 +48,6 @@ const getData = async () => {
 };
 
 getData();
-
-// textContianer.addEventListener("mouseover", () => {
-//   console.log("Text box");
-//   getData();
-// });
-
-// Function to create love particles
 function createLoveParticle() {
   const loveParticle = document.createElement("div");
   loveParticle.classList.add("love-particle");
@@ -68,16 +63,28 @@ function createLoveParticle() {
 // Generate love particles every 0.5 seconds
 setInterval(createLoveParticle, 500);
 
-function filterText(category) {
-  var loveTexts = document.querySelectorAll(".love-text");
+// const filter = async () => {
+// const data = getData();
+// console.log(data);
+// };
+
+// filter();
+
+const filterText = async (category) => {
+  const loveTexts = document.querySelectorAll(".love-text");
   loveTexts.forEach(function (text) {
-    if (text.classList.contains(category)) {
-      text.style.display = "block";
+    const categories = text.classList; // Get all classes of the element
+    if (categories.contains(category)) {
+      // Check if the desired category exists
+      text.style.display = "block"; // If yes, display it\
+      text.style.backgroundColor = "lightblue";
     } else {
-      text.style.display = "none";
+      text.style.display = "none"; // If not, hide it
     }
   });
-}
+};
+
+filterText("romance");
 
 function resetFilters() {
   var loveTexts = document.querySelectorAll(".love-text");
